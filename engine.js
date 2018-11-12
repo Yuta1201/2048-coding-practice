@@ -6,6 +6,10 @@ var randomCell = {
 };
 var tableObject = document.getElementById("playground");
 var forsearch = new Array;
+var lines = new Array;
+for(var i=0; i<4; i++){
+    lines[i] = new Array;
+}
 
 
 //-----表を作成
@@ -43,6 +47,52 @@ function searchEmptyCell(){
     })
 }
 
-for(var i=0; i<16; i++){
+//-----矢印キーでの操作を追加
+window.addEventListener('keydown',function(e){
+    moveTo(e.keyCode);
+})
+
+function defineCells(direction){
+    if((direction == 37)||(direction == 39)){
+        for(var i=0; i<4; i++){
+            for(var j=0; j<4; j++){
+                lines[i][j] = document.getElementById('cell' + i + j).textContent != '' ? Number(document.getElementById('cell' + i + j).textContent) : '';
+            }
+        }
+    }else{
+        for(var i=0; i<4; i++){
+            for(var j=0; j<4; j++){
+                lines[j][i] = document.getElementById('cell' + i + j).textContent != '' ? Number(document.getElementById('cell' + i + j).textContent) : '';
+            }
+        }
+    }
+}
+
+function moveTo(_keycode){
+    switch(_keycode){
+        case 37:
+        defineCells(37);
+        break;
+
+        case 38:
+        alert('to up');
+        break;
+
+        case 39:
+        alert('to right');
+        break;
+
+        case 40:
+        alert('to down');
+        break;
+
+        default:
+        alert('invalid key was pressed!');
+        break;
+    }
+}
+
+//------------- for testing -------------
+for(var i=0; i<2; i++){
     addRandomNumber();
 }
