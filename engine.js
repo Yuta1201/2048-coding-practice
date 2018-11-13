@@ -11,7 +11,6 @@ for(var i=0; i<4; i++){
     lines[i] = new Array;
 }
 
-
 //-----表を作成
 for(var i=0; i<4; i++){
     var tr = document.createElement('tr');
@@ -56,15 +55,25 @@ function defineCells(direction){
     if((direction == 37)||(direction == 39)){
         for(var i=0; i<4; i++){
             for(var j=0; j<4; j++){
-                lines[i][j] = document.getElementById('cell' + i + j).textContent != '' ? Number(document.getElementById('cell' + i + j).textContent) : '';
+                lines[i][j] = Number(document.getElementById('cell' + i + j).textContent);
             }
         }
     }else{
         for(var i=0; i<4; i++){
             for(var j=0; j<4; j++){
-                lines[j][i] = document.getElementById('cell' + i + j).textContent != '' ? Number(document.getElementById('cell' + i + j).textContent) : '';
+                lines[j][i] = Number(document.getElementById('cell' + i + j).textContent);
             }
         }
+    }
+}
+
+function deleteEmpty(){
+    
+}
+
+function searchCells(_num){
+    for(var i=0; i<4; i++){
+        
     }
 }
 
