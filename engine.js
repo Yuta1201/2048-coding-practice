@@ -67,20 +67,29 @@ function defineCells(direction){
     }
 }
 
-function deleteEmpty(){
-    
-}
-
-function searchCells(_num){
+function moveCells(){
     for(var i=0; i<4; i++){
-        
+        lines[i] = lines[i].filter(function(e){return e != 0});
+        lines[i].length = 4;
+        lines[i].forEach(function(e, n){
+            if(e == lines[i][n + 1]){
+                lines[i][n] = e*2;
+                lines[i][n + 1] = undefined;
+                lines[i] = lines[i].filter(function(e){return e != 0});
+                lines[i].length = 4;
+            }
+        })
     }
 }
+
+
 
 function moveTo(_keycode){
     switch(_keycode){
         case 37:
         defineCells(37);
+        moveCells();
+        effectToScreen(37);
         break;
 
         case 38:
